@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Belajar Vue - Embuncode</title>
+</head>
+<body>
+
+	<div id="VueID">
+		{{ pesan }}
+	</div>
+
+</body>
+<!-- Memanggail Library Vue Js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#VueID',
+		data: {
+			pesan: 'Saya Sedang Belajar Vue!'
+		}
+	})
+</script>
+
+</html>
