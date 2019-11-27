@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directive V-For | Embuncode</title>
+</head>
+<body>
+
+	<!-- ===================== -->
+	<!-- Directive v-for with Array -->
+	<!-- ===================== -->
+	
+	<div id="dw">
+		<ul class="list-group">
+			<li v-for="language in languages">
+				Saya Belajar Pemrograman <b> "{{ language }}" </b>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+		new Vue ({
+			el: '#dw',
+			data: {
+				languages: [
+					'php',
+					'javascript',
+					'ruby',
+					'python'
+				]
+			}
+		});
+	</script>
+
+	<!-- ===================== -->
+	<!-- Directive v-for with Object -->
+	<!-- ===================== -->
+
+	<div id="dw">
+		<ul class="list-group">
+			<li v-for="language in languages">
+				Saya Belajar Pemrograman <b> "{{ language.name }}" </b> dengan pengalaman <b> {{ language.experience }}</b>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+		new Vue ({
+			el: '#dw',
+			data: {
+				languages: [
+					{
+						name: 'php',
+						experience: '2 tahun'
+					},
+					{
+						name: 'Python',
+						experience: '3 tahun'
+					},
+					{
+						name: 'Ruby',
+						experience: '3 tahun'
+					}
+				]
+			}
+		});
+	</script>
+</body>
+</html>

@@ -13,7 +13,7 @@ Fundamental Vue Js &amp; Implementation with Laravel
   Data Binding adalah teknik yang digunakan untuk melakukan binding (mengikat) data antara model dan view yang disinkronkan setiap terjadi perubahan data dan dilakukan dengan directive v-model.
 
 - Vue Js: Mengenal Directive
-  Directive layaknya atribut pada HTML, yang digunakan untuk memberitahu library untuk memanipulasi DOM element. Directive memiliki ciri yakni dimulai dengan prefix v- dan value dari directive digunakan untuk melakukan binding expressions.
+  Directive layaknya atribut pada HTML, yang digunakan untuk memberitahu library untuk memanipulasi DOM element. Directive memiliki ciri yakni dimulai dengan prefix v- dan value dari directive digunakan untuk melakukan binding expressions. Tugas directive adalah memberikan instruksi ke DOM untuk melakukan sesuatu saat value expression berubah. Terdapat banyak Directive diantaranya: v-show, v-if & v-else, v-for. Directive v-for dapat digunakan pada data berbentuk array / object.
 
 
 ## Referensi
