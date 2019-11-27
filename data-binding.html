@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Binding - Embuncode</title>
+</head>
+<body>
+
+	<div id="dw">
+		<input type="text" v-model="title">
+		<p><b>Materi: </b>{{ title }} </p>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+		new Vue ({
+			el: '#dw',
+			data: {
+				title: 'Vue Js: Data Binding'
+			}
+		});
+	</script>
+</body>
+</html>

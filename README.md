@@ -6,4 +6,15 @@ Fundamental Vue Js &amp; Implementation with Laravel
 
 ## learning stages
 
-- Install & Say Hello
+- Vue Js: Install & Say Hello
+  Vue.js adalah kerangka kerja JavaScript progresif yang bersumber terbuka untuk membangun antarmuka pengguna.
+
+- Vue Js: Data Binding
+  Data Binding adalah teknik yang digunakan untuk melakukan binding (mengikat) data antara model dan view yang disinkronkan setiap terjadi perubahan data dan dilakukan dengan directive v-model.
+
+- Vue Js: Mengenal Directive
+  Directive layaknya atribut pada HTML, yang digunakan untuk memberitahu library untuk memanipulasi DOM element. Directive memiliki ciri yakni dimulai dengan prefix v- dan value dari directive digunakan untuk melakukan binding expressions.
+
+
+## Referensi
+Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
