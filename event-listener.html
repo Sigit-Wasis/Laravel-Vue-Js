@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Agenda - Embuncode</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<!-- HTML -->
+	<div class="container" style="padding-top: 20px">
+		<div class="row" id="dw">
+			<div class="col-md-6">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title">Daftar Agenda</h3>
+					</div>
+					<div class="panel-body">
+                        <button class="btn btn-danger btn-sm" v-on:click="bukaForm" v-if="hideTombol"><i class="fa fa-folder-open-o"></i> Lihat</button>
+                        <div v-show="tampilForm">
+                            <div class="form-group">
+                                <label>Agenda</label>
+                                <input type="text" class="form-control" placeholder="Agenda apa hari ini ?" v-model="agenda">
+                            </div>
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <input type="text" class="form-control" v-model="deskripsi">
+                            </div>
+                            <div class="form-group">
+                                <label>Tanggal</label>
+                                <input type="date"  class="form-control" v-model="jadwal">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-md" v-on:click="tambahData"><i class="fa fa-plus-circle"></i> Tambah</button>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="agenda" v-for="list in lists">
+                            <h3><i class="fa fa-bullhorn"></i> {{ list.agenda }}</h3>
+                            <p><i class="fa fa-calendar"></i> {{ list.jadwal }}</p>
+                            <p>{{ list.deskripsi }}</p>
+                            <hr>
+                        </div>
+                    </div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	<!-- Vue -->
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+	    new Vue({
+	        el: '#dw',
+	        data: {
+	            agenda: '',
+	            deskripsi: '',
+	            jadwal: '',
+	            lists: [
+	                
+	            ],
+	            tampilForm: false,
+	            hideTombol: true
+	        },
+	        methods: {
+	            bukaForm() {
+	                this.tampilForm = true;
+	                this.hideTombol = false;
+	            },
+	            tambahData() {
+	            	this.lists.push({
+	            		agenda: this.agenda,
+	            		jadwal: this.jadwal,
+	            		deskripsi: this.deskripsi
+	            	});
+	            	this.agenda = '',
+	            	this.jadwal = '',
+	            	this.deskripsi = ''
+	            }
+	        }
+	    }); 
+	</script>
+	
+</body>
+</html>

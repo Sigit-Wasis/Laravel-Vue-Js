@@ -15,6 +15,9 @@ Fundamental Vue Js &amp; Implementation with Laravel
 - Vue Js: Mengenal Directive
   Directive layaknya atribut pada HTML, yang digunakan untuk memberitahu library untuk memanipulasi DOM element. Directive memiliki ciri yakni dimulai dengan prefix v- dan value dari directive digunakan untuk melakukan binding expressions. Tugas directive adalah memberikan instruksi ke DOM untuk melakukan sesuatu saat value expression berubah. Terdapat banyak Directive diantaranya: v-show, v-if & v-else, v-for. Directive v-for dapat digunakan pada data berbentuk array / object.
 
+- Vue Js: Event Listener
+  Event pada javascript akan membuat web kita menjadi lebih interaktif dimana akan melakukan suatu respon/aksi berdasarkan event yang telah ditentukan yang akan memicu jalannya script Javascript yang ada di dalam web tersebut. Dengan VueJS, ketika kita akan bekerja dengan event maka dapat menggunakan directive v-on lalu diikuti dengan jenis event yang akan digunakan, misal: v-on:click, v-on:submit, v-on:keyup, dll.
+
 
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
