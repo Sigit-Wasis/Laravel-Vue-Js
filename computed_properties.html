@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Computed Properties - Embuncode</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<!-- ====================== -->
+	<!-- Computed Properties Serderhana -->
+	<!-- ====================== -->
+	<div id="ec">
+		<p>Berapa Hasil dari {{ a }} + {{ b }} * {{ c }} = {{ hasilnya }}</p>
+		<p>Hasil adalah = {{ hasilnya }}</p>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#ec',
+			data: {
+				a: 100,				
+				b: 300,
+				c: 900
+			},
+			computed: {
+				hasilnya: function() {
+					return this.a + this.b * this.c;
+				}
+			},
+		})
+	</script>
+
+	<!-- ======================== -->
+	<!-- Computed Properties Complex -->
+	<!-- ======================== -->
+	<div id="qd" class="container">
+		<h1>Perhitungan Sederhana</h1>
+		<div class="form-group">
+			<label>Nilai A</label>
+			<input type="number" v-model="a" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Operator</label>
+			<select class="form-control" v-model=o>
+				<option>+</option>
+				<option>-</option>
+				<option>/</option>
+				<option>*</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Nilai B</label>
+			<input type="number" v-model="b" class="form-control">
+		</div>
+
+		<H2>Hasil:</H2>
+		<p>Nilai A = {{ a }}</p>
+		<p>Nilai B = {{ b }}</p>
+		<p>Maka A {{ o }} B = {{ hasil }}</p>
+ 	</div>
+
+ 	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#qd',
+			data: {
+				a: '1',				
+				b: '1',
+				o: ''
+			},
+			computed: {
+                hasil: function() {
+                    switch (this.o) {
+                        case "+":
+                        return parseFloat(this.a) + parseFloat(this.b)
+                        break;
+                        case "-":
+                        return parseFloat(this.a) - parseFloat(this.b)
+                        break;
+                        case "*":
+                        return parseFloat(this.a) * parseFloat(this.b)
+                        break;
+                        case "/":
+                        return parseFloat(this.a) / parseFloat(this.b)
+                        break;
+                    }
+                }
+            }
+		});
+	</script>
+
+	<!-- ======================== -->
+	<!-- Computed Properties Filtering -->
+	<!-- ======================== -->
+
+	<div id="dw" class="container">
+		<h1>Siswa yang memiliki tinggi di atas 65 sebanyak = ({{ tertinggi.length }}) Orang</h1>
+		<ul class="list-group">
+			<li v-for="siswa in siswas" class="list-group-item">
+				{{ siswa.nama }} Belajar "{{ siswa.matkul }}"
+				dan mendapatkan nilai {{ siswa.nilai }}.
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+		new Vue ({
+			el: '#dw',
+			data: {
+				siswas: [
+					{
+						matkul: "Vue JS",
+						nama: "Sigit wasis subekti",
+						nilai: 90
+					},
+					{
+						matkul: "Vue JS",
+						nama: "Dobleh",
+						nilai: 10
+					},
+					{
+						matkul: "Vue JS",
+						nama: "Jamal",
+						nilai: 70
+					},
+					{
+						matkul: "Vue JS",
+						nama: "Taufik",
+						nilai: 40
+					},
+				]
+			},
+			computed: {
+				tertinggi: function() {
+					return this.siswas.filter(function(item) {
+						return item.nilai > 65;
+					});
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>
