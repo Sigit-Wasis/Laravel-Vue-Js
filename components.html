@@ -50,18 +50,25 @@
 
 	<!-- ===================================== -->
 	<!-- COMPONENT VERSI3 dan Banyak Digunakan -->
+	<!-- Props membuat content dinamis -->
+	<!-- v-bind:dw berfungsi ketika tipe data dari content adalah object  -->
 	<!-- ===================================== -->
 	<div id="dw" class="container">
-		<dw-text></dw-text>
+		<dw-text isi="Latiha Vuejs"></dw-text>
+		<!-- <dw-text v-bind:dw="{isi:'Belajar', itu: 'Menyenangkan'}"></dw-text> // data object --> 
+		<dw-text isi="Dan semoga Ilmunya berkah dan manfaat"></dw-text>
 	</div>
 
 	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
 	<!-- Custom Templates dengan tag template dan diikuti oleh id -->
 	<template id="dw-text">
-		<h1>Embun Code Lampung</h1>
+		<h1>{{ isi }}</h1>
+		<!-- <h3>{{ dw.isi }} dan {{ dw.itu }}</h3>  // menampilkan object  -->
 	</template>
 	<script type="text/javascript">
 		Vue.component('dw-text', {
+			props: ['isi'],
+			// props: ['dw'], // object
 			template: '#dw-text'
 		});
 
