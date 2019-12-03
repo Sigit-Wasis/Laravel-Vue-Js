@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Components - Embuncode</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+	<!-- ============================================== -->
+	<!-- Directive v-model & Component -->
+	<!-- ============================================== -->
+	<div id="dw" class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<panel v-for="list in lists" :listdata="list"></panel>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Judul</label>
+					<input type="text" v-model="judul" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Konten</label>
+					<textarea v-model="konten" class="form-control"></textarea>
+				</div>
+				<div class="form-group">
+					<button @click="simpan" class="btn btn-danger btn-sm">Kirim</button>
+				</div> 
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+
+	<template id="panel">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				{{ listdata.judul }}
+			</div>
+			<div class="panel-body">
+				{{ listdata.konten }}
+			</div>
+		</div>
+	</template>
+
+	<script type="text/javascript">
+		Vue.component('panel', {
+			props: ['listdata'],
+			template: '#panel'
+		});
+
+		new Vue({
+			el: '#dw',
+			data: {
+				judul: '',
+				konten: '',
+				lists: [
+					{
+						judul: 'Belajar Vue',
+						konten: 'Belajar Vue dengan materi component'
+					}
+				]
+			},
+			methods: {
+				simpan() {
+					this.lists.push({
+						judul: this.judul,
+						konten: this.konten
+					})
+				}
+			}
+		});
+	</script>
+
+	<!-- ============================================== -->
+	<!-- Berkomunikasi Dengan Component: Custom Event -->
+	<!-- ============================================== -->
+
+	<div id="dw" class="container">
+        <domain v-model="domain" @applied="cekDomains"></domain>
+        <p v-if="tersedia"><strong>{{ domain }}</strong> Tersedia!</p>
+    </div>
+​
+    <script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+    
+    <template id="form">
+        <div>
+            <input class="form-control" ref="input" :value="value" @input="cekDomain($event.target.value)">
+            <button v-on:click="cekDomains" class="btn btn-danger">Cek</button>
+        </div>
+    </template>
+    <script type="text/javascript">
+        Vue.component('domain', {
+            props: ['value'],
+            template: '#form',
+            methods: {
+                cekDomain(value) {
+                    this.$emit('input', value);
+                },
+                cekDomains() {
+                    this.$emit('applied');
+                }
+            }
+        });
+​
+        new Vue({
+            el: '#dw',
+            data: {
+                domain: '',
+                tersedia: false
+            },
+            methods: {
+                cekDomains() {
+                    this.tersedia = true;
+                }
+            }
+        }); 
+    </script>
+	
+</body>
+</html>

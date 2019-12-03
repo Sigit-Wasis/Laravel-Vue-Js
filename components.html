@@ -77,5 +77,48 @@
 		});
 	</script>
 
+	<!-- ===================================== -->
+	<!-- COMPONENT REUSABLE (Berubah) -->
+	<!-- ===================================== -->
+	<div id="dw" class="container">
+		<h1>Jadwal Senin</h1>
+		<ul>
+			<dw-paragraf v-for="dw in jadwal" v-bind:dw="dw"></dw-paragraf>
+		</ul>
+		<h1>Jadwal Selasa</h1>
+		<ul>
+			<dw-paragraf v-for="dw in jadwal" v-bind:dw="dw"></dw-paragraf>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<!-- Custom Templates dengan tag template dan diikuti oleh id -->
+	<template id="dw-paragraf">
+		<li>{{ dw.isi }} pada jam {{ dw.jam }}</li>
+	</template>
+	<script type="text/javascript">
+		Vue.component('dw-paragraf', {
+			props: ['dw'],
+			template: '#dw-paragraf'
+		});
+
+		new Vue ({
+			el: '#dw',
+			data: {
+				jadwal: [
+					{
+						isi: 'belajar vue js', jam: '10.00'
+					},
+					{
+						isi: 'belajar html', jam: '09.00'
+					},
+					{
+						isi: 'belajar laravel', jam: '15.00'
+					}
+				]
+			}
+		});
+	</script>
+
 </body>
 </html>
