@@ -21,5 +21,10 @@ Fundamental Vue Js &amp; Implementation with Laravel
 - <b>Vue Js: Computed Properties</b>
   Inline expression didalam Vue.js sangat mudah dan menjadi pilihan yang dapat digunakan untuk case yang sederhana, akan tetapi untuk case yang memiliki logika yang rumit sebaiknya menggunakan computed properties. Perbedaan antara Computed Properties dengan Methods, Jika Computed Properties tidak mengalami perubahan maka operasinya tidak akan di jalankan kembali, sedangkah Methods setiap kali ada perubahan maka akan menjalankan kembali fungsinya.
 
+- <b>Vue Js: Make a Component</b>
+  Component adalah salah satu fitur yang powerful dari Vue.js, anda dapat membuat sebuah component yang berisi elemen HTML yang dapat digunakan kembali (reusable) tanpa perlu menuliskan kembali elemen tersebut. dan memudahkan untuk maintenance code yang telah kita tulis. Mendaftarkan component dengan menggunakan Vue.component().
+
+- <b>Vue Js: </b>
+
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/

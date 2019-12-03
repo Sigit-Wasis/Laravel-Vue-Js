@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Components - Embuncode</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<!-- ==================== -->
+	<!-- COMPONENT VERSI1 -->
+	<!-- ==================== -->
+	<div id="dw" class="container">
+		<dw-paragraf></dw-paragraf>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+		Vue.component('dw-paragraf', {
+			template: '<h1>Membuat Paragraf</h1>'
+		});
+
+		new Vue ({
+			el: '#dw',
+		});
+	</script>
+
+	<!-- ==================== -->
+	<!-- COMPONENT VERSI2 -->
+	<!-- ==================== -->
+	<div id="dw" class="container">
+		<dw-title></dw-title>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<!-- Custom Templates dengan type text/template -->
+	<script type="text/template" id="dw-title">
+		<h1>Embun Code</h1>
+	</script>
+	<script type="text/javascript">
+		Vue.component('dw-title', {
+			template: '#dw-title'
+		});
+
+		new Vue ({
+			el: '#dw',
+		});
+	</script>
+
+	<!-- ===================================== -->
+	<!-- COMPONENT VERSI3 dan Banyak Digunakan -->
+	<!-- ===================================== -->
+	<div id="dw" class="container">
+		<dw-text></dw-text>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<!-- Custom Templates dengan tag template dan diikuti oleh id -->
+	<template id="dw-text">
+		<h1>Embun Code Lampung</h1>
+	</template>
+	<script type="text/javascript">
+		Vue.component('dw-text', {
+			template: '#dw-text'
+		});
+
+		new Vue ({
+			el: '#dw',
+		});
+	</script>
+
+</body>
+</html>
