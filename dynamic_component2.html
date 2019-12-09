@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic Component - Daengweb</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		.fade-transition {
+		  transition: opacity 0.2s ease;
+		}
+		.fade-enter, .fade-leave {
+		  opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="dw">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Daengweb</a>
+		    </div>
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="#" @click="dilihat='postingan'">Postingan</a>
+				</li>
+				<li>
+					<a href="#" @click="dilihat='buat-postingan'">Buat Postingan</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="container">
+			<keep-alive>
+				<component :is="dilihat" transition="fade" transition-mode="out-in"></component>
+			</keep-alive>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<template id="postingan">
+		<div>
+			<h1>Postingan</h1>
+			<div class="list-group">
+				<a v-for="post in posts" href="#" class="list-group-item clearfix">
+					{{ post }}
+					<span class="pull-right">
+						<button class="btn btn-xs btn-info">
+							<span class="fa fa-edit"></span>
+						</button>
+						<button class="btn btn-xs btn-warning">
+							<span class="fa fa-trash"></span>
+						</button>
+					</span>
+				</a>
+			</div>
+		</div>
+	</template>
+	<template id="buat-postingan">
+		<div>
+			<h1>Buat Postingan</h1>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Judul</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" placeholder="Judul Artikel">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Konten</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" rows="5"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Simpan</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</template>
+	<script type="text/javascript">
+		Vue.component('postingan', {
+			template: '#postingan',
+			data: function() {
+			    return {
+			      	posts: [
+			        	'Membuat Dynamic Component',
+			        	'Api Laravel 5.5',
+			        	'HTML Fundamental',
+			        	'Otentikasi Dengan Laravel 5.5'
+			      	]
+			    }
+			 }
+		});
+		Vue.component('buat-postingan', {
+			template: '#buat-postingan'
+		});
+		new Vue({
+			el: '#dw',
+			data: {
+				dilihat: 'postingan'
+			}
+		});	
+	</script>
+</body>
+</html>

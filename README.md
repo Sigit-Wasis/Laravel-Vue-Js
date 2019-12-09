@@ -24,7 +24,8 @@ Fundamental Vue Js &amp; Implementation with Laravel
 - <b>Vue Js: Make a Component</b>
   Component adalah salah satu fitur yang powerful dari Vue.js, anda dapat membuat sebuah component yang berisi elemen HTML yang dapat digunakan kembali (reusable) tanpa perlu menuliskan kembali elemen tersebut. dan memudahkan untuk maintenance code yang telah kita tulis. Mendaftarkan component dengan menggunakan Vue.component(). menggunakan props membuat content yang dimiliki lebih dinamis.
 
-- <b>Vue Js: </b>
+- <b>Vue Js: Dynamic Component</b>
+  Dynamic component pada Vue.js memungkin anda untuk menentukan mounting point dimana anda dapat beralih secara dinamis antar component dalam aplikasi anda. Pada tahap awal, kita akan mencoba membuat dynamic component, menggunakan parameter keep-alive, dan memberikan efek transitions saat user beralih diantara keduanya.
 
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/

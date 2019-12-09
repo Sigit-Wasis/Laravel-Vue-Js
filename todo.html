@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <title>Todo Gits</title>
+</head>
+
+<body>
+
+    <div id="app" class="container">
+
+        <div class="form-group">
+            <h1>Todo-List Gits</h1>
+            <input type="text" class="form-control" name="todo" id="todo" placeholder="todo..." v-model="todo" @keyup.enter="addTodo">
+            <button class="btn btn-primary" @click="addTodo()" style="margin-top: 8px;">Add</button>
+        </div>
+
+        <table class="table" v-if="todos.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Todo</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody v-for="(todo, index) in todos" :key="index">
+                <td scope="row">{{index}}</td>
+                <td>{{todo}}</td>
+                <td>
+                    <button class="btn btn-danger" @click="deleteTodo(index)">Delete</button>
+                </td>
+            </tbody>
+        </table>
+        <h1 v-else>Todonya kosong mas</h1>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    todos: [],
+                    todo: ""
+                }
+            },
+            created() {
+                this.loadLocalStorage();
+            },
+            watch: {
+                todos() {
+                    localStorage.setItem("todos", JSON.stringify(this.todos));
+                }
+            },
+            methods: {
+                loadLocalStorage() {
+                    const ls = JSON.parse(localStorage.getItem("todos"))
+                    console.log(ls)
+                    if (ls == null) {
+                        return;
+                    }
+                    this.todos = ls;
+                    console.log(this.todos);
+                },
+                addTodo() {
+                    this.todos.push(this.todo);
+                    this.todo = "";
+                },
+                deleteTodo(index) {
+                    this.todos.splice(index, 1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

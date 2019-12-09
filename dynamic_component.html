@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Components - Embuncode</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+    	.navigation {
+  			margin: 10px 0;
+		}
+
+		.navigation ul {
+		  	margin: 0;
+		  	padding: 0;
+		}
+
+		.navigation ul li {
+		  	display: inline-block;
+		  	margin-right: 20px;
+		}
+
+		input, label, button {
+		  	display: block
+		}
+
+		input, textarea {
+		  	margin-bottom: 10px;
+		}	
+    </style>
+</head>
+<body>
+
+	<div id="app">
+	  	<div class="navigation">
+	    	<ul>
+	      		<li><a href="#home" @click="switchTo('home')">Home</a></li>
+	      		<li><a href="#about" @click="switchTo('about')">About</a></li>
+	      		<li><a href="#portfolio" @click="switchTo('portfolio')">Portfolio</a></li>
+	      		<li><a href="#contact" @click="switchTo('contact')">Contact</a></li>
+	    	</ul>
+	  	</div>
+
+	  	<div class="pages">
+	    	<keep-alive>
+	      		<component :is="currentPage"></component>
+	    	</keep-alive>
+	  	</div>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+			    currentPage: 'home',
+			},
+		  	methods: {
+		     	switchTo: function(page) {
+		            this.currentPage = page;
+		     	}
+		  	},
+		  	components: {
+		    	home: {
+		      		template: `<div>
+		                 <h2>Home</h2>
+		                 <p>{{ homeData }}</p>
+		                 </div>`,
+		      		data: function() {
+		         		return {
+		            		homeData: 'My about data'    
+		         		}
+		       		}
+		     	},
+
+		    	about: {
+		      		template: `<div>
+		                 <h2>About</h2>
+		                 <p>{{ aboutData }}</p>
+		                 </div>`,
+		      		data: function() {
+		         		return {
+		            		aboutData: 'My about data'
+		         		}
+		      		}
+		    	},
+
+		    	portfolio: {
+		      		template: `<div>
+		                 <h2>Portfolio</h2>
+		                 <p>{{ Portfolio }}</p>
+		                 </div>`,
+		      		data: function() {
+		         		return {
+		            		Portfolio: 'My Portfolio'
+		         		}
+		      		}
+		    	},
+
+		    	contact: {
+		      		template: `<div>
+		             	<h2>Contact</h2>
+		             	<form method="POST" @submit.prevent>
+		             	<label>Your Name:</label>
+		             	<input type="text" v-model="contactData.name" >
+		             	<label>You message: </label>
+		             	<textarea v-model="contactData.message"></textarea>
+		             	<button type="submit">Send</button>
+		             	</form>
+		             	</div>`,
+		       		data: function() {
+		          		return {
+		            		contactData: { name:'', message:'' }   
+		         		}
+		      		}
+		    	}
+		  	}
+		})
+	</script>
+	
+</body>
+</html>
