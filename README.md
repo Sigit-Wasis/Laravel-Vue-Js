@@ -27,5 +27,8 @@ Fundamental Vue Js &amp; Implementation with Laravel
 - <b>Vue Js: Dynamic Component</b>
   Dynamic component pada Vue.js memungkin anda untuk menentukan mounting point dimana anda dapat beralih secara dinamis antar component dalam aplikasi anda. Pada tahap awal, kita akan mencoba membuat dynamic component, menggunakan parameter keep-alive, dan memberikan efek transitions saat user beralih diantara keduanya.
 
+- <b>Vue Js: Ajax Request Menggunakan Axios</b>
+  Ajax Request Menggunakan Axios (axios hanya third party atau library untuk malakukan suatu request. Axios itu sama seperti jquery ($.ajax, $.get, $.post), atau vue-resourse) untuk berkomunikasi dengan banckend dalam menciptakan website yang interaktif. dengan menggunakan teknologi ajax maka untuk berinteraksi dengan backend dalam melakukan pertukaran data akan lebih mudah dan tanpa mereload halaman website secara keseluruhan.
+
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
