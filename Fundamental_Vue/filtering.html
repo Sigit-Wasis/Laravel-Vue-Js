@@ -8,6 +8,10 @@
 </head>
 <body>
 	
+	<!-- Filtering & Formatting -->
+	<!-- ========================= -->
+	<!-- a. Formmatting Currency -->
+	<!-- ========================= -->
 	<div id="dw">
 		<select v-model="kategori">
 			<option value="makanan">Makanan</option>
@@ -18,12 +22,28 @@
 		</ul>
 	</div>
 
+	<!-- ========================= -->
+	<!-- b. Formmatting Date -->
+	<!-- ========================= -->
+	<div id="dw">
+		<ul>
+			<li v-for="row in data">{{ row.tempat }}, {{ row.tgl_lahir | date }}</li>
+		</ul>
+	</div>
+
+	<!-- Library vuejs -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<!-- Library formatting money -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
+    <!-- Library formatting date -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 
     <script type="text/javascript">
     	Vue.filter('currency', function (money) {
 
+ 			// =========================
+			// a. Formmatting Currency 
+			// =========================
     		/* Penjelasan Formatting */
     		/* 1. Memiliki Prefix Rp */
     		/* 2. Menetapkan 2 angka di belakang koma */
@@ -49,6 +69,29 @@
     			filterKategori() {
     				return this.data.filter(row => row.kategori === this.kategori)
     			}
+    		}
+    	})
+    </script>
+
+    <script type="text/javascript">
+    	Vue.filter('date', function(date) {
+	    	// =========================
+			// b. Formmatting Currency 
+			// =========================
+	    	/* Penjelasan Formatting */
+	    	/* 1. D menampilkan tanggal */
+	    	/* 2. MMM Menampilkan nama bulan */
+	    	/* 3. Y Menampilkan format tahun */
+    		return moment(date).format('D MM Y');
+    	})
+    	new Vue({
+    		el: '#dw',
+    		data: {
+    			data: [
+    				{ tempat: 'Selimbun Jaya', tgl_lahir: '2009-02-01' },
+    				{ tempat: 'Lampung Barat', tgl_lahir: '1999-07-09' },
+    				{ tempat: 'Bahway', tgl_lahir: '1997-02-06' },
+    			]
     		}
     	})
     </script>

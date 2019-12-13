@@ -37,6 +37,8 @@ Fundamental Vue Js &amp; Implementation with Laravel
      Untuk mempermudah pembacaan angka maka membuat format currencies dengan menggunakan library accouting.min.js
      dalam library ini ada yang berfungsi untuk membuat currencies pada <i>Date dan Money</i>.
   3. Formatting Date
+     Di dalam database dikenali dengan format yyyy-mm-dd sedangkan di indonesia format tanggal yang umumnya digunakan adalah dd-mm-yyyy.
+     untuk melakukan formating date menggunakan library bantuan dengan <i>moment.js</i>
 
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
