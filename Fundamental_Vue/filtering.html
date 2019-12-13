@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Embuncode - Filtering & Formatting</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	
+	<div id="dw">
+		<select v-model="kategori">
+			<option value="makanan">Makanan</option>
+			<option value="minuman">Minuman</option>}
+		</select>
+		<ul>
+			<li v-for="row in filterKategori">{{ row.title }} - {{ row.price | currency }}</li>
+		</ul>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.4.1/accounting.min.js"></script>
+
+    <script type="text/javascript">
+    	Vue.filter('currency', function (money) {
+
+    		/* Penjelasan Formatting */
+    		/* 1. Memiliki Prefix Rp */
+    		/* 2. Menetapkan 2 angka di belakang koma */
+    		/* 3. Pemisah bilangan menggunakan . */
+    		/* 4. Pemisah desimal menggunakan , */
+    		return accounting.formatMoney(money, "Rp ", 2, ".", ",")
+    	})
+    	new Vue({
+    		el: '#dw',
+    		data: {
+    			data: [
+    				{ title: 'Mie Goreng', price: 12000, kategori: 'makanan' },
+                    { title: 'Nasi Goreng', price: 10000, kategori: 'makanan' },
+                    { title: 'Kopi Susu', price: 11000, kategori: 'minuman' },
+                    { title: 'Bakso', price: 9000, kategori: 'makanan' },
+                    { title: 'Sate', price: 15000, kategori: 'makanan' },
+                    { title: 'Cappucino', price: 10000, kategori: 'minuman' },
+                    { title: 'Ayam Goreng', price: 15000, kategori: 'makanan' }
+    			],
+    			kategori: ''
+    		},
+    		computed: {
+    			filterKategori() {
+    				return this.data.filter(row => row.kategori === this.kategori)
+    			}
+    		}
+    	})
+    </script>
+
+</body>
+</html>

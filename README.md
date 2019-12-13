@@ -30,5 +30,13 @@ Fundamental Vue Js &amp; Implementation with Laravel
 - <b>Vue Js: Ajax Request Menggunakan Axios</b>
   Ajax Request Menggunakan Axios (axios hanya third party atau library untuk malakukan suatu request. Axios itu sama seperti jquery ($.ajax, $.get, $.post), atau vue-resourse) untuk berkomunikasi dengan banckend dalam menciptakan website yang interaktif. dengan menggunakan teknologi ajax maka untuk berinteraksi dengan backend dalam melakukan pertukaran data akan lebih mudah dan tanpa mereload halaman website secara keseluruhan.
 
+- <b>Vue Js: Filtering & Formatting Vue Js</b>
+  Adapun point of content dari filtering dan formatting adalah 
+  1. Filtering List with a computed property
+  2. Formatting Currencies With Filter
+     Untuk mempermudah pembacaan angka maka membuat format currencies dengan menggunakan library accouting.min.js
+     dalam library ini ada yang berfungsi untuk membuat currencies pada <i>Date dan Money</i>.
+  3. Formatting Date
+
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
