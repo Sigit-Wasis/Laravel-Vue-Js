@@ -40,5 +40,9 @@ Fundamental Vue Js &amp; Implementation with Laravel
      Di dalam database dikenali dengan format yyyy-mm-dd sedangkan di indonesia format tanggal yang umumnya digunakan adalah dd-mm-yyyy.
      untuk melakukan formating date menggunakan library bantuan dengan <i>moment.js</i>
 
+- <b>Vue Js: Simple Validation with Vuejs</b>
+  Garis besar dari topik ini adalah Dynamic form, Validate Form, Adding style conditionally, Reset Form.
+  1. Dynamic form adalah membuat form login & form registration hingga tahap validasi.
+
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
