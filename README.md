@@ -42,7 +42,11 @@ Fundamental Vue Js &amp; Implementation with Laravel
 
 - <b>Vue Js: Simple Validation with Vuejs</b>
   Garis besar dari topik ini adalah Dynamic form, Validate Form, Adding style conditionally, Reset Form.
-  1. Dynamic form adalah membuat form login & form registration hingga tahap validasi.
+  1. Dynamic form adalah membuat form login & form registration hingga tahap validasi. Pembahasan disini hanya sampai tahap validasi client side.
+  2. Validate form, Ada dua jenis validasi yang akan diangkat dalam artikel ini, pertama form tidak boleh kosong dan kedua inputan yang berupa email, harus memasukkan format email. Karena menggunakan Bootstrap, maka sebagai feedback error-nya akan menggunakan class is-invalid.
+  3. Adding style conditionally adalah memberika style kepada form ketika tidak memenuhi kriteria yang ditetapkan dengan memberika class binding pada form.
+  4. Reset Form adalah digunakan untuk menghapus value dari form ketika berpindah form. dengan menambahkan method di vuejs.
+  
 
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
