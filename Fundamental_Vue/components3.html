@@ -17,11 +17,21 @@
 						Biodata
 					</div>
 					<div class="card-body">
-						<!-- ISI -->
+						<!-- apabila show memiliki value biodata maka yang di load adalah component biodata. 
+							selain itu load component showprofile -->
+						<div v-if="show == 'biodata'">
+							<!-- send-data merupakan custom name yang berisi value yang dikirimkan dari child component. Sedangkan getData adalah methods yang akan menerima value yang dikirimkan. -->
+							<biodata ref="form" @send-data="getData"/>
+						</div>
+						<div v-else>
+							<showprofile :data="data"/>
+						</div>
 					</div>
 					<div class="card-footer">
-						<button class="btn btn-primary btn-sm">
-							Save
+						<!--  Apabila button bernilai true maka akan di-binding disabled property sehingga tombol tidak bisa diklik. {{ button ? 'Loading...':buttonTitle }}, apabila button bernilai true, maka teks pada tombol menjadi Loading..., selain itu akan menampilkan teks sesuai dari value buttonTitle -->
+						<!-- dan ketika tombol di klik akan memanggil method saveData -->
+						<button class="btn btn-primary btn-sm" @click="saveData" :disabled="button">
+							{{ button ? 'Loading...':buttonTitle }}
 						</button>
 					</div>
 				</div>
@@ -38,13 +48,30 @@
     <script type="text/x-template" id="biodataform">
     	<div>
     		<div class="form-group">
-    			<label for="">Nama Lengkap</label>
-    			<input type="text" v-model="data.nama" class="form-control">
+    			<label for="">Nama Lengkap</label> 
+    			<input type="text" v-model="data.nama" :class="{ 'is-invalid' : valName }" class="form-control">
     		</div>
     		<div class="form-group">
     			<label for="">Email</label>
-    			<input type="email" v-model="data.email" class="form-control">
+    			<input type="email" v-model="data.email" :class="{ 'is-invalid' : valEmail }" class="form-control">
     		</div>
+    	</div>
+    </script>
+    <!-- Component untuk menampilkan biodata yang telah di inputkan -->
+    <script type="text/x-template" id="showform">
+    	<div>
+    		<table class="table table-hover">
+    			<tr>
+    				<th>Nama Lengkap</th>
+    				<td>:</td>
+    				<td>{{ data.nama }}</td>
+    			</tr>
+    			<tr>
+    				<td>Email</td>
+    				<td>:</td>
+    				<td>{{ data.email }}</td>
+    			</tr>
+    		</table>
     	</div>
     </script>
     <!-- Register component diatas -->
@@ -61,49 +88,84 @@
     			}
     		},
     		// berisi code untuk mengosongkan form ketika component di load
-    		mouted() {
+    		mounted() {
     			this.data = {
     				nama: '',
     				email: ''
     			}
-    		}
+    		},
+    		methods: {
+    			// this.$emit digunakan untuk mengirimkan nilai ke parent. Adapun parameter pertama adalah custome name dan paramenter selanjutnya adalah value yang akan dikirimkan.
+    			submitForm() {
+    			    this.$emit('send-data', this.data)
+    			}
+			},
+    		computed: {
+    			valName() {
+        			if (this.data.nama.length === 0 || this.data.nama.length > 50) {
+            			return true;
+        			} 
+        			return false;
+    			},
+    			valEmail() {
+        			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        			if (re.test(this.data.email)) {
+        			    return false;
+        			}
+        			return true;
+    			}
+			}		
     	})
 
     	// Component dengan nama showprofile yang akan men-load template dengan id #showform
     	// Code dibawah untuk meregistrasi component dengan nama showprofile
+    	// Untuk mengirimkan data dari parent ke child bisa menggunakan props, 
+    	// sedangkan untuk mengirim data dari child ke parent bisa menggunakan $emit.
     	Vue.component('showprofile', {
-    		template: '#showform'
+    		template: '#showform',
+    		props: ['data']
     	})
 
+    	// ROOT INSTANCE
     	new Vue({
-    		el: '#dw',
+    		el: '#ec',
     		data: {
     			show: 'biodata', // berisi nama dari component yang otomatis menampilkan component sesuai valuenya.
     			button: false, // nilai yang akan memberikan efek loading apabila tombol di tekan.
     			buttonTitle: 'Save', // Value save nanti akan berganti sesuai dengan component yang di load.
     			data: {} // menampung value yang dikirim dari component.
     		},
+    		methods: {
+   				saveData() {
+   				    this.button = true // merubah value menjadi true
+   				    // Mengecek, jika value dari show adalah biodata dan value dari valName dan valEmail tidak bernilai true maka akan menjalan perintah yang ada didalam block if.
+   				    //  Fungsi dari $refs adalah untuk mengakses method dari component lain. Sedangkan form dari mana? form merupakan value dari ref yang didefinisikan ketika memanggil component.
+   				    if (this.show == 'biodata' && !this.$refs.form.valName && !this.$refs.form.valEmail) {
+   				    	// Dimana, kita mengatur timeout selama 1 detik kemudian mengakses method submitForm yang terdapat didalam component biodata. Lalu mengubah value dari show, buttonTitle dan mengembalikan value dari button menjadi false.
+   				        setTimeout(() => {
+   				            this.$refs.form.submitForm()
+   				            this.show = 'showprofile'
+   				            this.buttonTitle = 'Back'
+   				            this.button = false
+   				        }, 1000)
+   				    } else {
+   				    	// Selain itu, kita mengatur timeout menjadi 0,5 detik dengan mengembalikan value menjadi seperti sebelumnya.
+   				        setTimeout(() => {
+   				            this.data = {}
+   				            this.show = 'biodata'
+   				            this.button = false
+   				            this.buttonTitle = 'Save'
+   				        }, 500)
+   				    }
+   				},
+   				getData(value) {
+    				this.data = {
+    				    nama: value.nama,
+    				    email: value.email
+    				}
+				}
+			}
     	})
     </script>
-    
-    <!-- Component untuk menampilkan biodata yang telah di inputkan -->
-    <script type="text/x-template" id="showform">
-    	<div>
-    		<table class="table table-hover">
-    			<tr>
-    				<th>Nama Lengkap</th>
-    				<td>:</td>
-    				<td>:</td>
-    			</tr>
-    			<tr>
-    				<td>Email</td>
-    				<td>:</td>
-    				<td>:</td>
-    			</tr>
-    		</table>
-    	</div>
-    </script>
-
-	
 </body>
 </html>
