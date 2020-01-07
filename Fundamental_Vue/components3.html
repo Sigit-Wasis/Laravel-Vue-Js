@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Component Vue Js</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div class="container" id="ec">
+		<div class="row" style="padding-top: 20px">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						Biodata
+					</div>
+					<div class="card-body">
+						<!-- ISI -->
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-primary btn-sm">
+							Save
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>	
+
+    <!-- Component form pengisian biodata -->
+    <script type="text/x-template" id="biodataform">
+    	<div>
+    		<div class="form-group">
+    			<label for="">Nama Lengkap</label>
+    			<input type="text" v-model="data.nama" class="form-control">
+    		</div>
+    		<div class="form-group">
+    			<label for="">Email</label>
+    			<input type="email" v-model="data.email" class="form-control">
+    		</div>
+    	</div>
+    </script>
+    <!-- Register component diatas -->
+    <script>
+    	Vue.component('biodata', {
+    		template: '#biodataform',
+    		// component dengan nama data dan 2 buah form yaitu nama dan email
+    		data() {
+    			return {
+    				data: {
+    					nama: '',
+    					email: ''
+    				}
+    			}
+    		},
+    		// berisi code untuk mengosongkan form ketika component di load
+    		mouted() {
+    			this.data = {
+    				nama: '',
+    				email: ''
+    			}
+    		}
+    	})
+
+    	// Component dengan nama showprofile yang akan men-load template dengan id #showform
+    	// Code dibawah untuk meregistrasi component dengan nama showprofile
+    	Vue.component('showprofile', {
+    		template: '#showform'
+    	})
+
+    	new Vue({
+    		el: '#dw',
+    		data: {
+    			show: 'biodata', // berisi nama dari component yang otomatis menampilkan component sesuai valuenya.
+    			button: false, // nilai yang akan memberikan efek loading apabila tombol di tekan.
+    			buttonTitle: 'Save', // Value save nanti akan berganti sesuai dengan component yang di load.
+    			data: {} // menampung value yang dikirim dari component.
+    		},
+    	})
+    </script>
+    
+    <!-- Component untuk menampilkan biodata yang telah di inputkan -->
+    <script type="text/x-template" id="showform">
+    	<div>
+    		<table class="table table-hover">
+    			<tr>
+    				<th>Nama Lengkap</th>
+    				<td>:</td>
+    				<td>:</td>
+    			</tr>
+    			<tr>
+    				<td>Email</td>
+    				<td>:</td>
+    				<td>:</td>
+    			</tr>
+    		</table>
+    	</div>
+    </script>
+
+	
+</body>
+</html>

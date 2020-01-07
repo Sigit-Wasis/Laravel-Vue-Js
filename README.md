@@ -47,6 +47,10 @@ Fundamental Vue Js &amp; Implementation with Laravel
   3. Adding style conditionally adalah memberika style kepada form ketika tidak memenuhi kriteria yang ditetapkan dengan memberika class binding pada form.
   4. Reset Form adalah digunakan untuk menghapus value dari form ketika berpindah form. dengan menambahkan method di vuejs.
   
+- <b>Vue Js: Menggunakan Component di Vue Js</b>
+  Point of content yang di bahas adalah tentang creating & registration Component, make form validation, berkomunikasi dengan component.
+  1. Creating & Registration Component = membuat form untuk mengisi biodata diantaranya adalah nama lengkap dan email.
+  2. 
 
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
