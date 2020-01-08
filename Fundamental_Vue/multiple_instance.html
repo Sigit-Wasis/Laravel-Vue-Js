@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Embuncode</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div class="container" style="padding-top: 20px">
+        <div class="row">
+            <!-- BAGIAN FORM -->
+            <div class="col-md-6" id="form-input">
+                <div class="card">
+                    <div class="card-header">Add New</div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="">Nama Lengkap</label>
+                            <input type="text" v-model="nama" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">No Telepon</label>
+                            <input type="text" v-model="no_telp" class="form-control">
+                        </div>
+                        <div class="form-group">
+                        	<!-- @click="addnew" merupakan event dimana ketika tombol diklik maka akan menjalankan method addnew(). -->
+                            <button @click="addnew" class="btn btn-primary btn-sm">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+​
+            <!-- BAGIAN TABLE -->
+            <div class="col-md-6" id="show-data">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Nama Lengkap</td>
+                                    <td>No Telp</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(row, index) in biodata">
+                                    <td>{{ index + 1 }}</td>
+                                    <td>{{ row.nama }}</td>
+                                    <td>{{ row.no_telp }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+​
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var form = new Vue({
+            el: '#form-input',
+            data: {
+                nama: '',
+                no_telp: ''
+            }
+            // Dimana show adalah define name dari instance Vuejs yang meng-handle table. Sedangkan biodata adalah variable array yang dimiliki oleh show instance. Sedangkan push() adalah method untuk menambahkan data kedalam array.
+            methods: {
+   				addnew() {
+   				    show.biodata.push({ nama: this.nama, no_telp: this.no_telp })
+   				    this.nama = ''
+   				    this.no_telp = ''
+   				}
+			}
+        })
+​
+        var show = new Vue({
+            el: '#show-data',
+            data: {
+                biodata: [
+                    { nama: 'Sigit Wasis Subekti', no_telp: '082281488568' }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
+
+</body>
+</html>
