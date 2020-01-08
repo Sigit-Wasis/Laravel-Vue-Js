@@ -49,8 +49,7 @@ Fundamental Vue Js &amp; Implementation with Laravel
   
 - <b>Vue Js: Menggunakan Component di Vue Js</b>
   Point of content yang di bahas adalah tentang creating & registration Component, make form validation, berkomunikasi dengan component.
-  1. Creating & Registration Component = membuat form untuk mengisi biodata diantaranya adalah nama lengkap dan email.
-  2. 
+  file pembahasan di Fundamental_Vue dengan nama [components3.html](https://github.com/user/repo/blob/branch/other_file.md)
 
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
