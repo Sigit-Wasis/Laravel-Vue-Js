@@ -49,7 +49,9 @@ Fundamental Vue Js &amp; Implementation with Laravel
   
 - <b>Vue Js: Menggunakan Component di Vue Js</b>
   Point of content yang di bahas adalah tentang creating & registration Component, make form validation, berkomunikasi dengan component.
-  file pembahasan di Fundamental_Vue dengan nama [components3.html](https://github.com/user/repo/blob/branch/other_file.md)
+  file pembahasan di Fundamental_Vue dengan nama [components3.html](https://github.com/Sigit-Wasis/Laravel-Vue-Js/blob/master/Fundamental_Vue/components3.html).
+
+- 
 
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
