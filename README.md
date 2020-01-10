@@ -56,5 +56,14 @@ Fundamental Vue Js &amp; Implementation with Laravel
 - <b>Vue Js: Multiple Instance dan Cara Berkomunikasi Vue Js</b>
   Adapun case yang akan diangkat adalah sebuah form sederhana untuk menginput data yang kemudian ditampilkan pada table yang berada pada sisi lainnya, dimana masing-masing bagian ini menggunakan instance yang berbeda. File pembahasan di Fundamental_Vue dengan nama [multiple_instance.html](https://github.com/Sigit-Wasis/Laravel-Vue-Js/blob/master/Fundamental_Vue/multiple_instance.html).
 
+- <b>Vue Js: Tutorial Vuex #1 Manajemen State</b>
+  Vuex adalah library Vue js yang digunakan untuk menghandle state (state managemen). dimna data yang sudah anda pusatkan maka bisa digunakan oleh semua component yang ada. Interaksi antar components agar dapat saling bertukar data adalah dengan props, maka dengan vuex kita menggunakan state.
+
+  Ada beberapa konsep inti dari vuex, yaitu :
+    State => untuk menampung data murni.
+    Getters => untuk melakukan penyaringan/manipulasi/pengurutan data.
+    Mutation => untuk melakukan pengolahan data.
+    Actions => sama seperti mutations, akan tetapi actions dapat asynchronous.
+  
 ## Referensi
-Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/
+Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/ 
