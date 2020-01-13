@@ -64,6 +64,9 @@ Fundamental Vue Js &amp; Implementation with Laravel
     Getters => untuk melakukan penyaringan/manipulasi/pengurutan data.
     Mutation => untuk melakukan pengolahan data.
     Actions => sama seperti mutations, akan tetapi actions dapat asynchronous.
+
+- <b>Vue Js: Tutorial Vuex #2 Mutations and Actions
+  Mutations dan Actions untuk mengelola dan melakukan perubahan data pada state. Mutations bertugas untuk mengkonfirmasi setiap perubahan pada state sedangkan Actions bertugas untuk memberikan perintah terhadap apa yang akan dilakukan.
   
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/ 
