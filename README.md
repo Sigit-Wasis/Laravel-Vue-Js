@@ -67,7 +67,11 @@ Fundamental Vue Js &amp; Implementation with Laravel
 
 - <b>Vue Js: Tutorial Vuex #2 Mutations and Actions
   Mutations dan Actions untuk mengelola dan melakukan perubahan data pada state. Mutations bertugas untuk mengkonfirmasi setiap perubahan pada state sedangkan Actions bertugas untuk memberikan perintah terhadap apa yang akan dilakukan.
-  ---baru di agendainput.vue---
+  Bagian terpenting dalam Vuex adalah state, mutations, dan actions ini merupakan peranan dalam mengelola data menggunakan vuex.
+  File pembahasan di Vuex dengan nama [Tutorial-vuex-vuejs](https://github.com/Sigit-Wasis/Laravel-Vue-Js/blob/master/tutorial-vuex-vuejs).
+
+- <b>Vue Js: Tutorial Vuex #3 Module & Helpers
+  Module dan Helpers memungkinkan kita untuk memecah bagian dari aplikasi kita agar dapat di handle dengan mudah. Sebab apabila di gabungkan dengan satu file maka akan bertumpuk banyak dan akan susah untuk di maintenance di kemudian hari.
   
 ## Referensi
 Referensi pembelajaran dari: https://daengweb.id/ & https://vuejs.org/ 
